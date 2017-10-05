@@ -1,0 +1,224 @@
+tresor
+
+coffre ouvrir (vide, piégé,trésor)
+monstre fuir / combattre (resolation aléatoire du combat pondéré au nombre de trésor)
+
+pice carré (départ, neutre ou sortie)
+porte
+
+personnage (point de vie)
+
+donjon
+
+sortie
+entrée
+
+
+
+
+
+
+donjon
+IDENTIFIANT
+METHODE STATIC Liste > retounrne tous les donjons
+Methode GetNom > retourne le nom du donjon instancié
+Methode setNom > modifie le nom du donjon
+
+$oMonjoliDonjon = (1);
+echo "Mon Donjon s'appelle". $oMonjoliDonjon->GetNom(); // Mon joli Donjon
+//changer le nom 
+$oMonjoliDonjon = 
+
+http://private-5ae5d-wadvomnibox.apiary-mock.com
+
+
+
+{
+    "id_piece": 7,
+    ""id_pieces_visitables":[
+    { "id_piece":9 },
+    { "id_piece":5 },
+    { "id_piece":42 }
+    ]
+}
+
+{
+    "id_piece": 7,
+    "portes":[9,5,42],
+}
+
+
+- ROUTE A EFFECTUER
+
+POST -->  /perso/entree
+POST -->  /perso/piece
+POST -->  /perso/piece/monstre/fuir
+POST -->  /perso/piece/revenir
+POST -->  /perso/piece/monstre 
+GET  -->  /Donjon/perso 
+GET  -->  /perso/piece/coffre
+POST -->  /perso/piece/coffre/ouvrir
+
+#Creer personnage, points de vie par defaut pour tous, 100
+POST /perso 
+## ENTREE
+{
+    "nom_perso":"Guillaume"
+}
+
+## SORTIE 
+{
+    "id_perso":42,
+    "nom_perso":"Guillaume"
+    "pdv_perso":100
+}
+
+
+
+
+
+#PLACE UN JOUEUR A L'ENTREE DU DONJON 
+POST /perso/@id_perso/donjon/@id_donjon
+## ENTREE
+## SORTIE 
+
+{
+    "id_piece":56,
+    "id_piece_possibles":[89,43,52]
+}
+
+
+
+
+
+#SI IL PEUT (VERIFIER POSSIBILITE), le joueur entre dans une piece
+POST /perso/@id_perso/piece/id_piece
+## ENTREE 
+{
+    "id_piece_precedente":56
+}
+## SORTIE 
+### Piece contient un monstre et / ou un coffre
+{
+    "id_piece":56,
+    "id_piece_possibles":[89,43,52],
+    "id_piece_precedente":56
+
+    "monstre":{
+        "id_monstre":876,
+        "nom_monstre":"Casper",
+        "pdv_monstre":100
+    },
+    "id_coffre":987
+}
+
+
+
+
+
+
+#SI LUTILISATEUR OUVRE UN coffre
+POST /perso/id_perso/id_piece/coffre/@id_coffre/ouvrir
+##ENTREE
+##SORTIE 
+{
+        "id_coffre":987,
+        "piege_coffre":12, # si 0, non piégé, sinon nombre de points de vie retirés au joueur 
+        # uniquement si il y a un trésor
+        "tresor":{
+            "id_tresor":23,
+            "nom_tresor":"Excalibur"
+    }
+}
+
+
+
+
+
+
+
+
+
+#Donne les infos sur le coffre
+GET /perso/id_perso/id_piece/coffre/@id_coffre/ouvrir
+
+{
+        "id_coffre":987,
+        "piege_coffre":12, # si 0, non piégé, sinon nombre de points de vie retirés au joueur 
+        # uniquement si il y a un trésor
+        "tresor":{
+            "id_tresor":23,
+            "nom_tresor":"Excalibur"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Si l'utilisateur choisit de combattre
+POST /perso/@id_perso/piece/@id_piece/monstre/id_monstre/combattre
+## ENTREE
+## SORTIE
+
+{
+    "pdv_perso":80 # si 0 perdu
+}
+
+
+
+
+
+
+
+
+
+
+
+# Si l'utilisateur fuit on lui enleve des points de vie aléatoire entre 1 et 10
+POST /perso/@id_perso/piece/@piece/monstre/@id_monstre/fuir
+## ENTREE
+{
+    "id_piece_precedente":98
+}
+
+## SORTIE
+
+{
+    "pdv_perso": 95
+}
+
+
+
+
+
+40% de base de gagner jusqu'a 80% avec des trésors avec +5% par trésor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

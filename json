@@ -1,0 +1,29 @@
+{
+    "id_piece": 7,
+    "id_piece_visitables":[
+        { "id_piece": 9 },
+        { "id_piece": 5 },
+        { "id_piece": 42}
+    ]
+}
+
+{
+    "id_piece": 7,
+    "id_piece_visitables":[9,5,42],
+    "monstre":{
+        "id_monstre":89,
+        "pdv_monstre":50
+    }
+}
+
+
+POST PERSO/PIECE 
+
+POST PERSO/PIECE/REVENIR
+POST PERSO/PIECE/MONSTRE/FUIR 
+POST PERSO /PIECE/MONSTRE/COMBATTRE 
+
+GET MONSTRE 
+
+GET PERSO/PIECE/COFFRE
+POST PERSO/PIECE/COFFRE/OUVRIR
